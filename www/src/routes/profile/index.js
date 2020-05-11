@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import style from './style';
+import io from 'socket.io-client';
 
 export default class Profile extends Component {
 	state = {
@@ -19,6 +20,7 @@ export default class Profile extends Component {
 	// gets called when this route is navigated to
 	componentDidMount() {
 		// start a timer for the clock:
+		const socket = io('localhost:3000');
 		this.timer = setInterval(this.updateTime, 1000);
 	}
 
